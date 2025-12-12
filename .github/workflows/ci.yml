@@ -34,23 +34,17 @@ jobs:
       # Ejecuta la tarea 'test' de Gradle. Esto generará los reportes (JUnit XML/Cucumber JSON)
       run: ./gradlew test --no-daemon
 
-    - name: Upload Test Results to Qase (Qase CLI Script) 🚀
-      # Utilizaremos 'run' para ejecutar un script de bash/shell
+   # add before this step: uses: actions/setup-node@v4 (see below)
+    - name: Upload Test Results to Qase (via npx)
       run: |
         echo "Starting Qase CLI upload..."
-        # 1. Instala la Qase CLI de forma global en el runner
-        npm install -g qaseio
-        
-        # 2. Ejecuta el comando de subida.
-        # La CLI leerá automáticamente las variables de entorno definidas abajo.
-        qase upload junit "build/test-results/test/TEST-*.xml"
-        
+        # npx will fetch and run the correct package in one step
+        npx --yes qaseio upload junit "build/test-results/test/TEST-*.xml"
       env:
-        # Variables de entorno requeridas por la Qase CLI (deben llamarse QASE_...)
-        QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }} 
-        QASE_PROJECT_CODE: FRT 
-        QASE_RUN_NAME: Automated Tests Execution from GitHub Actions - ${{ github.sha }}
-        QASE_ENVIRONMENT: CI-Github-Actions     
+          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+          QASE_PROJECT_CODE: FRT
+          QASE_RUN_NAME: Automated Tests Execution from GitHub Actions - ${{ github.sha }}
+          QASE_ENVIRONMENT: CI-Github-Actions
       
 
    
