@@ -27,22 +27,24 @@ jobs:
     - name: Run Cucumber/Selenium Tests
       # Ejecuta la tarea 'test' de Gradle. Esto generará los reportes (JUnit XML/Cucumber JSON)
       run: ./gradlew test --no-daemon
+
+    - name: Upload Test Results to Qase (Qase CLI Script) 🚀
+      # Utilizaremos 'run' para ejecutar un script de bash/shell
+      run: |
+        echo "Starting Qase CLI upload..."
+        # 1. Instala la Qase CLI de forma global en el runner
+        npm install -g qase-cli
+        
+        # 2. Ejecuta el comando de subida.
+        # La CLI leerá automáticamente las variables de entorno definidas abajo.
+        qase upload junit "build/test-results/test/TEST-*.xml"
+        
+      env:
+        # Variables de entorno requeridas por la Qase CLI (deben llamarse QASE_...)
+        QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }} 
+        QASE_PROJECT_CODE: FRT 
+        QASE_RUN_NAME: Automated Tests Execution from GitHub Actions - ${{ github.sha }}
+        QASE_ENVIRONMENT: CI-Github-Actions     
       
 
-    - name: Upload Test Results to Qase 🚀
-      # Utilizaremos la acción de Qase CLI (Command Line Interface) 
-      # para subir los resultados de las pruebas generados por Gradle.
-      uses: qase-tms/qase-api-action@v1 # Una acción especializada para subir datos a Qase
-      with:
-        # 1. Tu token de API almacenado como secreto en GitHub
-        api_token: ${{ secrets.QASE_API_TOKEN }} 
-        # 2. El código de tu proyecto en Qase 
-        project_code: FRT
-        # 3. El formato y la ruta del reporte generado por Gradle 
-        # (Generalmente JUnit XML en la carpeta build)
-        mode: junit
-        files: build/test-results/test/TEST-*.xml
-        # 4. (Opcional) El entorno donde se ejecutó (ej. 'Staging', 'Local', 'CI')
-        environment: CI-Github-Actions
-        # 5. (Opcional) Nombre que verás en Qase para esta ejecución
-        run_name: Automated Tests Execution from GitHub Actions - ${{ github.sha }}
+   
