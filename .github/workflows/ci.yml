@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21' 
+        distribution: 'temurin' 
+        cache: 'gradle'
+
+    - name: Build with Gradle
+      # Este paso es importante para descargar dependencias y preparar el proyecto
+      run: ./gradlew build --no-daemon
+
+    - name: Run Cucumber/Selenium Tests
+      # Ejecuta la tarea 'test' de Gradle. Esto generará los reportes (JUnit XML/Cucumber JSON)
+      run: ./gradlew test --no-daemon
+      
+
+    - name: Upload Test Results to Qase 🚀
+      # Utilizaremos la acción de Qase CLI (Command Line Interface) 
+      # para subir los resultados de las pruebas generados por Gradle.
+      uses: qase-tms/qase-cli-github-action@v1 # Una acción especializada para subir datos a Qase
+      with:
+        # 1. Tu token de API almacenado como secreto en GitHub
+        api_token: ${{ secrets.QASE_API_TOKEN }} 
+        # 2. El código de tu proyecto en Qase 
+        project_code: FRT
+        # 3. El formato y la ruta del reporte generado por Gradle 
+        # (Generalmente JUnit XML en la carpeta build)
+        mode: junit
+        file: build/test-results/test/TEST-*.xml
+        # 4. (Opcional) El entorno donde se ejecutó (ej. 'Staging', 'Local', 'CI')
+        environment: CI-Github-Actions
+        # 5. (Opcional) Nombre que verás en Qase para esta ejecución
+        run_name: Automated Tests Execution from GitHub Actions - ${{ github.sha }}
