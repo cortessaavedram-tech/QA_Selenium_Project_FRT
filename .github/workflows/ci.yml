@@ -39,7 +39,7 @@ jobs:
       run: |
         echo "Starting Qase CLI upload..."
         # 1. Instala la Qase CLI de forma global en el runner
-        npm install -g qase-cli
+        npm install -g qase
         
         # 2. Ejecuta el comando de subida.
         # La CLI leerá automáticamente las variables de entorno definidas abajo.
