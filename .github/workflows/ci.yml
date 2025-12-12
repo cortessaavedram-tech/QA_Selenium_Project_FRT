@@ -32,7 +32,7 @@ jobs:
     - name: Upload Test Results to Qase 🚀
       # Utilizaremos la acción de Qase CLI (Command Line Interface) 
       # para subir los resultados de las pruebas generados por Gradle.
-      uses: qase-tms/qase-report-action@v1 # Una acción especializada para subir datos a Qase
+      uses: qase-tms/qase-cli-action@main # Una acción especializada para subir datos a Qase
       with:
         # 1. Tu token de API almacenado como secreto en GitHub
         api_token: ${{ secrets.QASE_API_TOKEN }} 
