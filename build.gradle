@@ -38,8 +38,8 @@ testImplementation 'org.junit.platform:junit-platform-suite:1.11.3'
 testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
 
 // https://mvnrepository.com/artifact/io.qase/qase-cucumber-v7-reporter
-testImplementation 'io.qase:qase-cucumber7-junit5:4.1.26'
-testImplementation 'io.qase:qase-api-client:4.1.26'
+testImplementation 'io.qase:qase-cucumber7-jvm:3.2.0'
+testImplementation 'io.qase:qase-api-client:3.2.0'
 
 }
 
