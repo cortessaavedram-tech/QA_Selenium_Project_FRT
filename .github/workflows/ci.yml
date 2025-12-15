@@ -13,9 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Grant Execution Permission to gradlew
-      run: chmod +x gradlew
-
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
@@ -23,34 +20,12 @@ jobs:
         distribution: 'temurin' 
         cache: 'gradle'
 
-    - name: Install Chrome and ChromeDriver
-      uses: browser-actions/setup-chrome@latest
+    - name: Grant Execution Permission to gradlew
+      run: chmod +x gradlew
 
-    - name: Build and Run Tests
-      # Ejecutamos build y test. 
-      # El build prepara todo y el test genera los reportes XML.
-      run: ./gradlew build test --no-daemon
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-
-    - name: Upload Test Results to Qase 🚀
-      run: |
-        echo "Limpiando prefijos de npm..."
-        # Esto soluciona el error de 'token expired' en runners de GitHub
-        npm config set registry https://registry.npmjs.org/
-        
-        echo "Instalando Qase CLI..."
-        npm install -g qase-cli
-        
-        echo "Subiendo resultados a Qase..."
-        # Usamos 'qase-cli' que es el ejecutable estándar
-        qase-cli result:upload \
-          --project "FRT" \
-          --format junit \
-          --run-name "GitHub Run ${{ github.run_number }}" \
-          "build/test-results/test/TEST-*.xml"
+    - name: Run Tests 🚀
+      # El plugin de Java se encarga de TODO durante el 'test'
+      run: ./gradlew test --no-daemon
       env:
+        # Importante: El plugin leerá este secreto automáticamente
         QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
