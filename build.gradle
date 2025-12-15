@@ -57,6 +57,8 @@ tasks.named('test') {
 
     //Activa el reporter de Qase
     systemProperty "qase.enable", "true"
+    systemProperty "qase.mode", "testops"
+    
 
     systemProperty "qase.project.code", "FRT"
     systemProperty "qase.api.token", "e82b65d4e7a0934a884de76e9c5ab8cba34d68f6a2dabc854260ab9d117103ff"
