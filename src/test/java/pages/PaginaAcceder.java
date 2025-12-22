@@ -6,7 +6,9 @@ package pages;
 public class PaginaAcceder extends BasePage {
 
     private String emailInput = "//input[@id='email']";
-    private String loginButton = "//span[normalize-space()='Inicio de sesión']"; 
+    private String loginButton = "//button[contains(., 'Inicio de sesión')]"; 
+
+    
     
     public void enterIncorrectEmail(String email) {
     write(emailInput, email);
