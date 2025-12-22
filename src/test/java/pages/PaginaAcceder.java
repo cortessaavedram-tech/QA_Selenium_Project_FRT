@@ -20,7 +20,7 @@ public class PaginaAcceder extends BasePage {
 
     public String getEmailValidationMessage() {
     // Esto captura el mensaje nativo "Incluye un signo @..."
-    return Find(emailInput).getDomAttribute("validationMessage");
+    return Find(emailInput).getDomProperty("validationMessage");
     }
 
 }
