@@ -14,15 +14,14 @@ Feature: Navigation
     Then The <Section Name> corresponds to <Section url>
 
      Examples: Navigation Data
-      | Section Name | Section url|
-       | Academia     | freerangetesters.com/academia|
-       | Cursos       | freerangetesters.com/cursos|
-       | Mentorías    | freerangetesters.com/mentoria-1-1-con-pato|
-       | Talleres     | freerangetesters.com/talleres-y-webinars|
-       | Blog         | freerangetesters.com/blog|
-       | Recursos     | freerangetesters.com/recursos|
-       | Udemy        | freerangetesters.com/udemy|
-       | Acceder      | freerangetesters.com/login|
+      | Section Name  | Section url                                |
+      | Suscripciones | freerangetesters.com/suscripciones         |
+      | Cursos        | freerangetesters.com/cursos                |
+      | Mentorías     | freerangetesters.com/mentoria-1-1-con-pato |
+      | Talleres      | freerangetesters.com/talleres-y-webinars   |
+      | Blog          | freerangetesters.com/blog                  |
+      | Recursos      | freerangetesters.com/recursos              |
+      | Acceder       | freerangetesters.com/login                 |
 
 
 @Login
