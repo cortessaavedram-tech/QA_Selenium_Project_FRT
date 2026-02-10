@@ -1,20 +1,24 @@
-# QA Automation Project - QA Project.-Free Range Testers
+# Java Selenium Automation Project - QA Project.-Free Range Testers
 
 ## 🚀 Key Achievements and Framework Architecture
 
 This project establishes a robust End-to-End (E2E) testing framework with a Continuous Integration (CI/CD) focus, demonstrating the capability to automate, execute, and report results in cloud environments.
 
-### 1. Technology Stack
+---
 
-| Component          |            Technology            |                        Purpose                    |
+## 1. Technology Stack
 
-| **Language**       |           Java 21                |                 Core of the Automation Framework. |
-| **Testing**        |       Cucumber (BDD) & JUnit 5   |    Implementation of business-readable scenarios. |
-| **Web Automation** |         Selenium WebDriver       |     Interaction with the browser and UI elements. |
-| **Build Tool**     |         Gradle                   |            Dependency management and build tasks. |
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Language** | Java 21 | Core of the Automation Framework. |
+| **Testing** | Cucumber (BDD) & JUnit 5 | Implementation of business-readable scenarios. |
+| **Web Automation** | Selenium WebDriver | Interaction with the browser and UI elements. |
+| **Build Tool** | Gradle | Dependency management and build tasks. |
+| **Test Management** | Qase.io (TestOps) | Centralized reporting and manual/auto traceability. |
 
+---
 
-### 2. Continuous Integration (CI/CD) Pipeline
+## 2. Continuous Integration (CI/CD) Pipeline
 
 A complete workflow was implemented in **GitHub Actions** to guarantee quality with every code push.
 
@@ -28,8 +32,9 @@ The following screenshots demonstrates the successful completion of the job, con
 ![Deatiled Action Log (Succeeded)](images/1.LogsGitHubActions.png)
 ![Job Summary (Success Tick)](images/2.JobGitHubActions.png)
 
+---
 
-### 3. TestOps Integration and Traceability
+## 3. TestOps Integration and Traceability
 
 A communication bridge was established between the test code and the test management platform.
 
@@ -37,37 +42,38 @@ A communication bridge was established between the test code and the test manage
   
 ### 3.1. Reporting Evidence (CI/CD Log)
 
-The log below confirms the successful connection and data upload to the platform, demonstrating the complete automation-to-quality management flow:
+I established a communication bridge between the automated suite and **Qase API** to ensure 100% traceability.
 
-```bash
-[io.qase.commons.reporters.CoreReporter] Starting test run
-[io.qase.commons.reporters.CoreReporter] Uploading results
-[io.qase.commons.reporters.CoreReporter] Completing test run
+* **Real-time Reporting:** Execution results are automatically uploaded to the TestOps platform.
+* **API Synchronization:** Confirmed via CI/CD logs:
+    ```bash
+    [io.qase.commons.reporters.CoreReporter] Starting test run
+    [io.qase.commons.reporters.CoreReporter] Uploading results
+    [io.qase.commons.reporters.CoreReporter] Completing test run
+    ```
+* **Visual Confirmation:**
+    ![Qase Connection](images/1.Qase.png)
 
-### 3.2. Visual Evidence
-
-These screenshots provide visual confirmation of the Qase plugin successfully connecting and processing results:
-![Qase Connection Detail 1] (images/1.Qase.png)
-![Qase Connection Detail 2] (images/2.Qase.png)
+  ---
 
 ## 4. 📈 Execution Results and BDD Traceability
 
-The framework generates detailed reports that validate business requirements (BDD) and provide clear evidence of the application flows.
+The framework follows a **Behavior Driven Development (BDD)** approach, ensuring that test cases are readable by both technical and non-technical stakeholders.
 
-### 4.1. Overview of Passed Scenarios
+### 💡 Implementation Highlights
+* **Data Driven Testing (DDT):** Utilized Cucumber *Scenario Outlines* to execute the same business flow with multiple data sets, maximizing coverage with minimal code.
+* **Traceability:** Every scenario is mapped to specific Test Case IDs (e.g., `@QaseId=2`) to maintain a clear link between requirements and automation.
 
-This screenshot from the Cucumber/Gradle HTML report validates that all mapped test cases (identified with `@QaseId=2`) have successfully passed. This confirms the successful end-to-end execution of all user flows.
+### 🔍 HTML Report Validation
+The Cucumber/Gradle report confirms that all mapped test cases passed successfully, validating the end-to-end user flows.
 
 ![Cucumber HTML Report Summary](images/Report.png)
 
-### 4.2. Data Driven Testing (DDT)
+---
 
-The full report showcases test duration and data validation, confirming the correct functioning of the **Data Driven Testing** approach via Scenario Outlines. This ensures broad coverage with minimal code repetition and high maintenance efficiency.
-
-
-
-
-
+## 📬 Contact
+**María Ángeles Cortés ** - [https://www.linkedin.com/in/mariangelescortes/)]
+*ISTQB® Certified Tester Foundation Level*
 
 
 
