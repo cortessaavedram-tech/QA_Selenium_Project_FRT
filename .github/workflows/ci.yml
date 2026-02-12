@@ -23,18 +23,14 @@ jobs:
     - name: Grant Execution Permission to gradlew
       run: chmod +x gradlew
 
-    - name: Run Tests 🚀
+    - name: Run Tests 
       # El plugin de Java se encarga de TODO durante el 'test'
       run: ./gradlew clean test
       env:
-        # Importante: El plugin leerá este secreto automáticamente
+        #  El plugin leerá este secreto automáticamente
         QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
 
-        
-    
-    - name: Run Tests
-      # Asegúrate de que tu paso de ejecución de tests esté aquí
-      run: ./gradlew clean test
+      
       
     # ------------------------------------------------------------------
     #  GUARDA LOS ARTEFACTOS GENERADOS 
