@@ -74,9 +74,8 @@ public class BasePage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
 
-   public String getCurrentLocator(String locator) {
-    WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
-    return element.getText();
+   public String getElementText(String locator) {
+    return Find(locator).getText();
    }
 
     public void clickElement(String locator){
