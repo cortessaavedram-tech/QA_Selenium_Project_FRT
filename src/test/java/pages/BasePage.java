@@ -20,7 +20,6 @@ public class BasePage {
     private static WebDriver driver;
     private static WebDriverWait wait;
     
-
     //Driver configuration (from Hooks class)
 
     public static void setupBrowser() {
@@ -34,7 +33,6 @@ public class BasePage {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1920,1080");
-
 
             //Driver is configurated using WebDriverManager
             WebDriverManager.chromedriver().setup();
@@ -61,13 +59,10 @@ public class BasePage {
         }
     }
 
-
     //To navigate to an URL
     public static void navigateTo(String url) {
         getDriver().get(url);
     }
-
-    
 
     //Finds and returns a web element
     protected WebElement Find(String locator){
@@ -83,8 +78,9 @@ public class BasePage {
     }
 
     public void write(String locator, String keysToSend){
-        Find(locator).clear();
-        Find(locator).sendKeys(keysToSend);
+        WebElement element = Find(locator);
+        element.clear();
+        element.sendKeys(keysToSend);
     }
 
     //Returns actual URL
@@ -110,7 +106,6 @@ public class BasePage {
 
     public List<String> getDropdownValues(String locator) {
          Select dropdown = new Select(Find(locator));
-
          List<WebElement> dropdownOptions = dropdown.getOptions();
          List<String> values = new ArrayList<>();
          for (WebElement option : dropdownOptions) {
