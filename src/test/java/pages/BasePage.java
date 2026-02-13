@@ -26,7 +26,7 @@ public class BasePage {
     public static void setupBrowser() {
         if (driver ==null) {
 
-            //Create and configure geadless options
+            //Create and configure headless options
             ChromeOptions options = new ChromeOptions();
 
             //Essential arguments for running in CI environments
@@ -71,7 +71,7 @@ public class BasePage {
 
     //Finds and returns a web element
     protected WebElement Find(String locator){
-        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
 
    public String getCurrentLocator(String locator) {
