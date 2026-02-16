@@ -13,7 +13,7 @@ import org.junit.platform.suite.api.Suite;
 @IncludeClassNamePatterns(".*")
 @ConfigurationParameters({
     @ConfigurationParameter(key = "cucumber.glue", value = "steps"), //Package where are the steps
-    @ConfigurationParameter(key = "cucumber.plugin", value = "pretty, io.qase.cucumber7.QaseEventListener"),
+    @ConfigurationParameter(key = "cucumber.plugin", value = "pretty, html:target/cucumber-reports.html, io.qase.cucumber7.QaseEventListener"),
     @ConfigurationParameter(key = "cucumber.filter.tags", value = "@QaseId=2")
 })
 
