@@ -14,7 +14,7 @@ import org.junit.platform.suite.api.Suite;
 @ConfigurationParameters({
     @ConfigurationParameter(key = "cucumber.glue", value = "steps"), //Package where are the steps
     @ConfigurationParameter(key = "cucumber.plugin", value = "pretty, html:target/cucumber-reports.html, io.qase.cucumber7.QaseEventListener"),
-    @ConfigurationParameter(key = "cucumber.filter.tags", value = "")
+    @ConfigurationParameter(key = "cucumber.filter.tags", value = "@smoke")
 })
 
 public class TestRunner {

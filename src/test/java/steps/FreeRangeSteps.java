@@ -1,12 +1,6 @@
 package steps;
 
-//import java.util.List;
-
-//import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-//import java.util.Arrays;
-
 
 import io.cucumber.java.en.*;
 import pages.BasePage;
@@ -36,13 +30,18 @@ public class FreeRangeSteps{
     }
 
     @When("the user enters an incorrect email")
-    public void enterInvalidEmail(){
-        accederPage.enterIncorrectEmail("usuarioSinArroba");
+    public void enterInvalidEmail() {
+        accederPage.enterIncorrectEmail();
     }
 
-    @And("clicks on Inicio de sesion button")
+    @And("the user clicks on Inicio de sesion button")
     public void clickLogin(){
-        accederPage.clickLogin();
+        accederPage.clickInicioSesion();
+    }
+
+   @And("the user waits to {string} message to appear")
+   public void waitForMessage(String message){
+        accederPage.waitForRobotMessage();
     }
 
     @Then("^The (.*) corresponds to (.*)$")

@@ -3,7 +3,7 @@ package pages;
 public class PaginaPrincipal extends BasePage {
 
     private String sectionLink = "//a[normalize-space()='%s' and @href]"; 
-    private String accederLink = "//a[normalize-space()='Acceder' and @href]"; 
+   private String accederLink = "//a[normalize-space()='Acceder' and @href]";
     
     //Method to navigate to www.freerangetesters.com
     public void navigateToFreeRangeTesters(){
@@ -16,7 +16,7 @@ public class PaginaPrincipal extends BasePage {
         clickElement(xpathSection);
     }
 
-    public void clickOnAcceder() {
+     public void clickOnAcceder() {
         clickElement(accederLink);
     }
 

@@ -1,24 +1,26 @@
 package pages;
 
-//import org.openqa.selenium.support.FindBy;
-
-
 public class PaginaAcceder extends BasePage {
 
-    private String emailInput = "//input[@id='email']";
-    private String loginButton = "//button[contains(., 'Inicio de sesión')]"; 
+    private String emailPlaceholder = "//input[@id='email']"; 
+    private String inicioSesionButton = "//button[@type='submit']"; 
+    private String idRobotMessage = "success-text";
 
-    public void enterIncorrectEmail(String email) {
-    write(emailInput, email);
+    public void waitForRobotMessage() {
+        waitForElement(idRobotMessage);
+    }
+    
+    public void enterIncorrectEmail() {
+    write(emailPlaceholder, "emailSinArroba.com");
     }
 
-    public void clickLogin() {
-    clickElement(loginButton);
+    public void clickInicioSesion() {
+    clickElement(inicioSesionButton);
     }
 
     public String getEmailValidationMessage() {
     // Esto captura el mensaje  "Incluye un signo @..."
-    return Find(emailInput).getDomProperty("validationMessage");
+    return Find(emailPlaceholder).getDomProperty("validationMessage");
     }
 
 }

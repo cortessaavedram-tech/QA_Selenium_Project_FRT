@@ -1,4 +1,4 @@
-@Navigation
+@navigation @smoke
 Feature: Navigation
 
   As a user without logging in on the FRT webpage
@@ -8,7 +8,7 @@ Feature: Navigation
   Background: The user is on the Free Range Testers web without logging in.
     Given The user navigate to www.freerangetesters.com
 
-  @QaseId=2
+@smoke @QaseId=2
   Scenario Outline: The user can access the subpages through the navigation bar
     When The user clicks on the section <Section Name>
     Then The <Section Name> corresponds to <Section url>
@@ -24,11 +24,12 @@ Feature: Navigation
       | Acceder       | freerangetesters.com/login                 |
 
 
-@Login
-  Scenario: Profile webpage- Login
+@login @smoke @QaseId=3
+  Scenario: Login
    Given the user is on Acceder Section
    When the user enters an incorrect email
-   And clicks on Inicio de sesion button
+   And the user waits to "Operación exitosa" message to appear
+   And the user clicks on Inicio de sesion button
    Then the message: "Incluye un signo @ en la dirección de correo electrónico", must appear
 
   

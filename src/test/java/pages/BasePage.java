@@ -29,7 +29,7 @@ public class BasePage {
             ChromeOptions options = new ChromeOptions();
 
             //Essential arguments for running in CI environments
-            options.addArguments("--headless=new");
+            //options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--window-size=1920,1080");
@@ -62,6 +62,11 @@ public class BasePage {
     //To navigate to an URL
     public static void navigateTo(String url) {
         getDriver().get(url);
+    }
+
+    //To wait for an element to be visible
+    public static void waitForElement(String locator){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(locator)));
     }
 
     //Finds and returns a web element
